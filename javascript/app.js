@@ -1,3 +1,28 @@
+const cursor = document.querySelector(".custom-cursor");
+const cursorBall = document.querySelector(".cursor__ball");
+
+// Center the cursor and cursor ball on page load
+window.addEventListener("DOMContentLoaded", centerCursor);
+
+// Center the cursor and cursor ball when the window is resized
+window.addEventListener("resize", centerCursor);
+
+function centerCursor() {
+  const windowCenterX = window.innerWidth / 2;
+  const windowCenterY = window.innerHeight / 2;
+
+  cursor.style.top = windowCenterY + "px";
+  cursor.style.left = windowCenterX + "px";
+  cursorBall.style.transform = `translate(-50%, -50%)`;
+}
+
+document.body.addEventListener("mousemove", debounce(onMouseMove, 10));
+
+function onMouseMove(event) {
+  cursor.style.top = event.clientY + "px";
+  cursor.style.left = event.clientX + "px";
+}
+
 // Toggle mode
 const body = document.body;
 const text = document.querySelector("h6");
@@ -27,14 +52,10 @@ document.body.addEventListener('mousemove', debounce(onMouseMoveHover, 10));
 
 function onMouseMoveHover(event) {
   const { clientX, clientY } = event;
-  const cursorOffset = cursor.getBoundingClientRect();
-  const cursorCenterX = cursorOffset.left + cursorOffset.width / 2;
-  const cursorCenterY = cursorOffset.top + cursorOffset.height / 2;
-
-  const deltaX = clientX - cursorCenterX;
-  const deltaY = clientY - cursorCenterY;
-
-  bigBall.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+  TweenMax.to(bigBall, .4, {
+    x: clientX - 15 + "px",
+    y: clientY - 15 + "px"
+  });
 }
 
 hoverables.forEach(hoverable => {
