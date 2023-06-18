@@ -1,14 +1,3 @@
-const cursor = document.querySelector(".custom-cursor");
-const cursorSize = 15; // Adjust the cursor size if needed
-
-document.body.addEventListener("mousemove", debounce(onMouseMove, 10));
-
-function onMouseMove(event) {
-  const cursorOffset = cursorSize / 2;
-  cursor.style.top = event.clientY - cursorOffset + "px";
-  cursor.style.left = event.clientX - cursorOffset + "px";
-}
-
 // Toggle mode
 const body = document.body;
 const text = document.querySelector("h6");
@@ -38,10 +27,14 @@ document.body.addEventListener('mousemove', debounce(onMouseMoveHover, 10));
 
 function onMouseMoveHover(event) {
   const { clientX, clientY } = event;
-  TweenMax.to(bigBall, .4, {
-    x: clientX - 15 + "px",
-    y: clientY - 15 + "px"
-  });
+  const cursorOffset = cursor.getBoundingClientRect();
+  const cursorCenterX = cursorOffset.left + cursorOffset.width / 2;
+  const cursorCenterY = cursorOffset.top + cursorOffset.height / 2;
+
+  const deltaX = clientX - cursorCenterX;
+  const deltaY = clientY - cursorCenterY;
+
+  bigBall.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
 }
 
 hoverables.forEach(hoverable => {
