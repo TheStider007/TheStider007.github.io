@@ -1,10 +1,12 @@
-// Cursor movement
 const cursor = document.querySelector(".custom-cursor");
+const cursorSize = 15; // Adjust the cursor size if needed
+
 document.body.addEventListener("mousemove", debounce(onMouseMove, 10));
 
 function onMouseMove(event) {
-  cursor.style.top = event.clientY - 7 + "px";
-  cursor.style.left = event.clientX - 7 + "px";
+  const cursorOffset = cursorSize / 2;
+  cursor.style.top = event.clientY - cursorOffset + "px";
+  cursor.style.left = event.clientX - cursorOffset + "px";
 }
 
 // Toggle mode
@@ -67,4 +69,3 @@ function debounce(func, delay) {
     timeoutId = setTimeout(() => func.apply(this, args), delay);
   };
 }
-
