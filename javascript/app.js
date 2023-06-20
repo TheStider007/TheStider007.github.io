@@ -1,26 +1,10 @@
+// Cursor movement
 const cursor = document.querySelector(".custom-cursor");
-const cursorBall = document.querySelector(".cursor__ball");
-
-// Center the cursor and cursor ball on page load
-window.addEventListener("DOMContentLoaded", centerCursor);
-
-// Center the cursor and cursor ball when the window is resized
-window.addEventListener("resize", centerCursor);
-
-function centerCursor() {
-  const windowCenterX = window.innerWidth / 2;
-  const windowCenterY = window.innerHeight / 2;
-
-  cursor.style.top = windowCenterY + "px";
-  cursor.style.left = windowCenterX + "px";
-  cursorBall.style.transform = `translate(-50%, -50%)`;
-}
-
 document.body.addEventListener("mousemove", debounce(onMouseMove, 10));
 
 function onMouseMove(event) {
-  cursor.style.top = event.clientY + "px";
-  cursor.style.left = event.clientX + "px";
+  cursor.style.top = event.clientY - 7 + "px";
+  cursor.style.left = event.clientX - 7 + "px";
 }
 
 // Toggle mode
@@ -83,3 +67,4 @@ function debounce(func, delay) {
     timeoutId = setTimeout(() => func.apply(this, args), delay);
   };
 }
+
