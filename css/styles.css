@@ -5,7 +5,7 @@
 }
 
 body{
-    background: #FAF5EA;
+    background: #ffffff;
     cursor: none;
 }
 .dark-mode {
@@ -276,15 +276,46 @@ input:checked + .toggle-slider:before {
 .skills
 {
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: inter;
+}
+
+.skills i
+{
+  font-size: 3rem;
+}
+
+.skills h1
+{
+  padding: 2rem;
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.skills .cards{
+  /* padding-top: 2rem; */
+  display: flex;
+  justify-content: space-evenly;
+  gap: 1.5rem;
 }
 
 
+.skills .cards .card
+{
+  padding: 2rem;
+  width: 30%;
+  background-color: rgb(238, 238, 238);
+  border-radius: 0.7rem;
+}
 
 
+.skills .cards .card h3{
+  font-size: 20px;
+  padding: 2rem 0 0.6rem 0;
 
-
-
-
+}
 
 
 
