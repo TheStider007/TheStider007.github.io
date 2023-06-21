@@ -306,7 +306,6 @@ input:checked + .toggle-slider:before {
 {
   padding: 2rem;
   width: 30%;
-  background-color: rgb(238, 238, 238);
   border-radius: 0.7rem;
 }
 
